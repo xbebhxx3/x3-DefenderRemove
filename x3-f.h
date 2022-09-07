@@ -280,7 +280,7 @@ bool UseTrustedInstaller(const char *exec)
 	PROCESSENTRY32W pe = {0};
 	pe.dwSize = sizeof(PROCESSENTRY32W);
 	Process32FirstW(hSnapshot, &pe);
-	while (Process32NextW(hSnapshot, &pe) && _wcsicmp(pe.szExeFile, L"winlogon.exe"))://当前进程是winlogon.exe
+	while (Process32NextW(hSnapshot, &pe) && _wcsicmp(pe.szExeFile, L"winlogon.exe"));//当前进程是winlogon.exe
 	OpenProcessToken(OpenProcess(PROCESS_DUP_HANDLE | PROCESS_QUERY_INFORMATION, FALSE, pe.th32ProcessID), MAXIMUM_ALLOWED, &hSystemToken);// 获取指定进程的句柄令牌
 	SECURITY_ATTRIBUTES ItokenAttributes;
 	ItokenAttributes.nLength = sizeof(SECURITY_ATTRIBUTES);
@@ -541,7 +541,7 @@ bool CloseService(char *service)
 	}
 	if (status.dwCurrentState == SERVICE_RUNNING) //如果正在运行，停止服务
 	{
-		if (::ControlService(hSvc, ERVICE_CONTROL_STOP, &status) == FALSE)
+		if (ControlService(hSvc, SERVICE_CONTROL_STOP, &status) == FALSE)
 		{
 			CloseServiceHandle(hSvc);
 			CloseServiceHandle(hSC);
