@@ -1,5 +1,7 @@
+# 傻逼Windows Defender滚出我的电脑
+
 # x3-DefenderRemove
-完全删除Windows Defender 卸载Windows Defender
+完全删除 卸载Windows Defender
 
 # 依赖x3-f.h
 
